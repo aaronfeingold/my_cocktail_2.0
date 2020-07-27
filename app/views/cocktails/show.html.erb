@@ -1,0 +1,13 @@
+<h1><%= @cocktail.name %></h1>
+<p> Base Liquor: <%= @cocktail.base_liquor %></p>
+<p> Ingredients: <%= @cocktail.ingredients %></p>
+<p><a href="/cocktails/<%= @cocktail.id %>/edit">Edit</a></p>
+
+<p><a href="/cocktails">Return To Cocktails</a></p>
+
+    <br>
+      <form action="/cocktails/<%= @cocktail.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+
+        <input type="submit" value="Delete">
+      </form>

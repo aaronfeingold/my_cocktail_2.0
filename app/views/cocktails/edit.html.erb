@@ -1,0 +1,25 @@
+<h1>Edit <%= @cocktail.name %></h1>
+
+<form action="/cocktails/<%= @cocktail.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <br>
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="cocktail[name]" id="name" value="<%= @cocktail.name %>">
+  </div>
+  <br>
+  <div>
+    <label for="base_liquor">Base Liquor</label>
+    <input type="text" name="cocktail[base_liquor]" id="base_liquor" value="<%= @cocktail.base_liquor %>">
+  </div>
+  <br>
+   <div>
+    <label for="ingredients">Ingredients</label>
+    <input type="text" name="cocktail[ingredients]" id="ingredients" value="<%= @cocktail.ingredients %>">
+  </div>
+  <br>
+
+  <br>
+  <input type="submit" value="Update Cocktail">
+</form>
