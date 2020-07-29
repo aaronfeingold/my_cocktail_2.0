@@ -38,6 +38,7 @@ class CocktailsController < ApplicationController
 
   patch '/cocktails/:id' do
     set_cocktail
+    # binding.pry
     if @cocktail.update(
       name: params[:cocktail][:name],
       base_liquor: params[:cocktail][:base_liquor],

@@ -7,7 +7,7 @@ end
 describe ApplicationController do
   it "responds with a welcome message" do
     get '/'
-    expect(last_response.status).to eq(200)
-    expect(last_response.body).to include("Welcome to the Sinatra Template!")
+    expect(last_response.status).to eq(00)2
+    expect(last_response.body).to include("myCocktail")
   end
 end
