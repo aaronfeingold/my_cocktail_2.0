@@ -1,15 +1,27 @@
-<h1><%= @cocktail.name %></h1>
-<p> Base Liquor: <%= @cocktail.base_liquor %></p>
-<p> Ingredients: <%= @cocktail.ingredients %></p>
-<p><a href="/cocktails/<%= @cocktail.id %>/edit">Edit</a></p>
-
-<p><a href="/cocktails">Return To Cocktails</a></p>
-
+<body>
+  <div class="container">
+    <div class="section">
+      <h4><%= @cocktail.name %></h4>
+      <br>
+      <p>Base Liquor: <%= @cocktail.base_liquor %></p>
+      <br>
+      <p> Ingredients: <%= @cocktail.ingredients %></p>
+  </div>
+<br>
+  <div>
+    <div class="divider"></div>
     <br>
-      <form action="/cocktails/<%= @cocktail.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit" class="btn waves-effect waves-light" value="Delete">
-          Delete
-        </button>
-      </form>
-
+    <ul>
+      <li><a href="/cocktails/<%= @cocktail.id %>/edit">Edit</a></li>
+      <br>
+      <li><a href="/cocktails">Return To Cocktails</a></li>
+    </ul>
+  </div>
+<br>
+  <form action="/cocktails/<%= @cocktail.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn waves-effect waves-light" value="Delete">
+      Delete
+    </button>
+  </form>
+</body>
