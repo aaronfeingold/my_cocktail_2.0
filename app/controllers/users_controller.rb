@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end 
   
   post '/signup' do
-    # binding.pry
     if params[:user][:password] == params[:user][:confirm_password]
       @user = User.new(:username=>params[:user][:username], :password=>params[:user][:password])
           if @user.save

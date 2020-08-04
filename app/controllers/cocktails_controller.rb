@@ -3,10 +3,6 @@ class CocktailsController < ApplicationController
   
   get '/cocktails' do
     @cocktails = current_user.cocktails
-    # filter = ShakenNotStirred.new
-    # filter.by_name("ginger")
-    # @results = filter.results
-    # binding.pry
     erb :'/cocktails/index.html'
   end
 
@@ -42,7 +38,6 @@ class CocktailsController < ApplicationController
 
   patch '/cocktails/:id' do
     set_cocktail
-    # binding.pry
     if @cocktail.update(
       name: params[:cocktail][:name],
       base_liquor: params[:cocktail][:base_liquor],

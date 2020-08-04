@@ -11,7 +11,6 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-gem "shaken_not_stirred", "~> 0.0.7"
 gem 'dotenv'
 gem 'rack-flash3'
 
