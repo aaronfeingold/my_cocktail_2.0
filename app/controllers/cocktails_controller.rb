@@ -3,6 +3,10 @@ class CocktailsController < ApplicationController
   
   get '/cocktails' do
     @cocktails = current_user.cocktails
+    # filter = ShakenNotStirred.new
+    # filter.by_name("ginger")
+    # @results = filter.results
+    # binding.pry
     erb :'/cocktails/index.html'
   end
 
