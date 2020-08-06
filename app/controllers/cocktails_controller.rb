@@ -32,7 +32,7 @@ class CocktailsController < ApplicationController
       redirect "/login"
     else 
       set_cocktail
-        if @cocktail.user_id == current_user.id
+        if set_cocktail.user_id == current_user.id
           erb :'/cocktails/edit.html'
         else
           flash[:error] = ["This user does not have access to edit this cocktail"]
@@ -46,7 +46,7 @@ class CocktailsController < ApplicationController
     # but so what? we have it setup such that only if current_user.id = cocktail.user_id
     # then will the program allow a user to edit or destroy the cocktail
     set_cocktail
-      if @cocktail
+      if set_cocktail
         erb :'cocktails/show.html'
       else
         redirect '/cocktails'
@@ -69,6 +69,7 @@ class CocktailsController < ApplicationController
             )
             redirect "/cocktails/#{set_cocktail.id}"
           else
+            flash[:error] = ["Could not update"]
             erb :'cocktail/edit.html'
           end
         end
@@ -76,16 +77,21 @@ class CocktailsController < ApplicationController
   end
 
   delete '/cocktails/:id' do
-    set_cocktail
-      if current_user.id == @cocktail.user_id
-        # if this doesn't match, the user won't be able to delete the cocktail
-        @cocktail.destroy
-        flash[:error] = ["Cocktail Deleted"]
-        redirect '/cocktails'
-      else
-        flash[:error] = ["This user does not have access to delete this cocktail"]
-        redirect '/cocktails' 
-      end
+    if !logged_in?
+      flash[:error] = ["You must be logged in to update your cocktails"]
+      redirect "/login"
+    elsif logged_in?
+      set_cocktail
+        if current_user.id == set_cocktail.user_id
+          # if this doesn't match, the user won't be able to delete the cocktail
+          set_cocktail.destroy
+          flash[:error] = ["Cocktail Deleted"]
+          redirect '/cocktails'
+        else
+          flash[:error] = ["You do not have access to delete this cocktail"]
+          redirect '/cocktails' 
+        end
+    end 
   end
 
   private
