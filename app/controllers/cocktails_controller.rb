@@ -1,5 +1,6 @@
 class CocktailsController < ApplicationController
 
+  # index page
   get '/cocktails' do
     #show the user all their cocktails they've added, if any yet
     # if you go to localhost:9393/cocktails w/o being logged in, it should redirect you to login screen
@@ -11,6 +12,7 @@ class CocktailsController < ApplicationController
     end 
   end
 
+  # new page
   get '/cocktails/new' do
     # stipulation: you must be a user and logged_in in order to create a new cocktail
     @cocktail = Cocktail.new
@@ -21,6 +23,7 @@ class CocktailsController < ApplicationController
     end
   end
 
+  # create aka post
   post '/cocktails' do
     @cocktail = Cocktail.new(params[:cocktail])
     if @cocktail.save
@@ -31,7 +34,8 @@ class CocktailsController < ApplicationController
       erb :'cocktails/new.html'
     end
   end
-
+  
+  #edit page
   get '/cocktails/:id/edit' do
     if !logged_in?
       flash[:error] = ["You must be logged in to edit your cocktails"]
@@ -47,6 +51,7 @@ class CocktailsController < ApplicationController
     end
   end
 
+  # read aka show page
   get '/cocktails/:id' do
     # this will give anyone --even non-users--access to view any given publically available cocktails
     # but so what? we have it setup such that only if current_user.id = cocktail.user_id
@@ -59,6 +64,7 @@ class CocktailsController < ApplicationController
       end
   end
 
+  #the update from edit page in from a form post via hidden method aka patch
   patch '/cocktails/:id' do
     # a user can ONLY edit the cocktails THEY have created,
     # and CANNOT edit public cocktails created by another user
@@ -82,6 +88,7 @@ class CocktailsController < ApplicationController
     end
   end
 
+  #delete
   delete '/cocktails/:id' do
     if !logged_in?
       flash[:error] = ["You must be logged in to update your cocktails"]
