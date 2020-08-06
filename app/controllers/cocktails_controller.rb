@@ -2,8 +2,13 @@ class CocktailsController < ApplicationController
 
   get '/cocktails' do
     #show the user all their cocktails they've added, if any yet
-    @cocktails = current_user.cocktails
-    erb :'/cocktails/index.html'
+    # if you go to localhost:9393/cocktails w/o being logged in, it should redirect you to login screen
+    if logged_in?
+      @cocktails = current_user.cocktails
+      erb :'/cocktails/index.html'
+    elsif !logged_in?
+      redirect '/login'
+    end 
   end
 
   get '/cocktails/new' do
@@ -29,6 +34,7 @@ class CocktailsController < ApplicationController
 
   get '/cocktails/:id/edit' do
     if !logged_in?
+      flash[:error] = ["You must be logged in to edit your cocktails"]
       redirect "/login"
     else 
       set_cocktail
