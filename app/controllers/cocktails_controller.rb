@@ -1,5 +1,4 @@
 class CocktailsController < ApplicationController
-  use Rack::Flash
   
   get '/cocktails' do
     @cocktails = current_user.cocktails

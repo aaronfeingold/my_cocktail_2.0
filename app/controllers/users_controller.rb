@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  use Rack::Flash
-
+ 
   get '/signup' do
     erb :'users/new'
   end 
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
       @user = User.new(:username=>params[:user][:username], :password=>params[:user][:password])
           if @user.save
             session[:user_id] = @user.id
-            redirect '/cocktails'
+            redirect '/login'
           else
             flash.now[:error] = @user.errors.full_messages
             erb :'users/new'
