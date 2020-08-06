@@ -91,7 +91,7 @@ class CocktailsController < ApplicationController
         if current_user.id == set_cocktail.user_id
           # if this doesn't match, the user won't be able to delete the cocktail
           set_cocktail.destroy
-          flash[:error] = ["Cocktail Deleted"]
+          flash[:notice] = "Cocktail Deleted"
           redirect '/cocktails'
         else
           flash[:error] = ["You do not have access to delete this cocktail"]
