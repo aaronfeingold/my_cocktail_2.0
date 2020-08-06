@@ -55,13 +55,19 @@ class CocktailsController < ApplicationController
   get '/cocktails/:id' do
     # this will give anyone --even non-users--access to view any given publically available cocktails
     # but so what? we have it setup such that only if current_user.id = cocktail.user_id
-    # then will the program allow a user to edit or destroy the cocktail
-    set_cocktail
-      if set_cocktail
-        erb :'cocktails/show.html'
-      else
-        redirect '/cocktails'
-      end
+    # then will the program allow a user to edit, update or destroy the cocktail
+    # still, if not logged in, it would be best having an agent access this page and being redirected to login
+    if !logged_in?
+      flash[:error] = ["You must be logged in to edit your cocktails"]
+      redirect "/login"
+    else 
+      set_cocktail
+        if set_cocktail
+          erb :'cocktails/show.html'
+        else
+          redirect '/cocktails'
+        end
+    end
   end
 
   #the update from edit page in from a form post via hidden method aka patch
