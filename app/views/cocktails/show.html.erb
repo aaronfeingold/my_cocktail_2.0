@@ -12,6 +12,8 @@
     <div class="divider"></div>
     <br>
     <ul>
+
+    <% if logged_in? && current_user.id == set_cocktail.user_id %>
       <li><a href="/cocktails/<%= @cocktail.id %>/edit">Edit</a></li>
       <br>
       <li><a href="/cocktails">Return To Cocktails</a></li>
@@ -23,5 +25,8 @@
     <button type="submit" class="btn waves-effect waves-light" value="Delete">
       Delete
     </button>
+    <% else %>
+     <%= "you are not logged in or the user for this cocktail" %>
+    <% end %>
   </form>
 </body>

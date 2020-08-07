@@ -15,7 +15,7 @@ class CocktailsController < ApplicationController
   # loads the form on a new page to make a new cocktail
   get '/cocktails/new' do
     # stipulation: you must be a user and logged_in in order to create a new cocktail
-    @cocktail = Cocktail.new
+    cocktail = Cocktail.new
     if logged_in?
         erb :'/cocktails/new.html'
     else
