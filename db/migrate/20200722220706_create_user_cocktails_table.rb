@@ -1,4 +1,4 @@
-class CreateUserCocktailsTable < ActiveRecord::Migration
+class CreateUserCocktailsTable < ActiveRecord::Migration[4.2]
     def change 
       create_table :user_cocktails do |t|
         t.integer :user_id
