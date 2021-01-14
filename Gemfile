@@ -14,20 +14,12 @@ gem 'bcrypt'
 gem 'dotenv'
 gem 'rack-flash3'
 gem 'rack'
-
+gem 'tux'
+gem 'pg'
 
 group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-end
-
-group :development, :test do
-  gem 'sqlite3'
-  gem "tux"
- end
-
-group :production do
-  gem 'pg'
 end

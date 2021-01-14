@@ -9,4 +9,4 @@ production:
   encoding: unicode
   pool: 5
   host: <%= ENV['DATABASE_HOST'] %>
-  database: production
+  database: my-cocktail-production
