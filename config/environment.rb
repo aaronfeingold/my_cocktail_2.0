@@ -4,16 +4,15 @@ require 'bundler/setup'
 require 'dotenv/load'
 require 'securerandom'
 
+Bundler.require(:default, ENV['SINATRA_ENV'])
+
 configure :development do
   ENV['SINATRA_ENV'] ||= "development"
  
-
-Bundler.require(:default, ENV['SINATRA_ENV'])
-
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
- )
+  ActiveRecord::Base.establish_connection(
+    :adapter => "sqlite3",
+    :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
+  )
 end
 
 configure :production do
