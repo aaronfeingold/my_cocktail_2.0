@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'rake'
@@ -22,6 +21,11 @@ group :test do
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
+
+group :development do
+  gem 'sqlite3'
+  gem "tux"
+ end
 
 group :production do
   gem 'pg'
