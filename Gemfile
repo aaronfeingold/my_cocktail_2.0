@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '3.0.0'
+
 gem 'sinatra'
 gem 'activerecord'
 gem 'sinatra-activerecord'
@@ -9,7 +11,6 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
-gem 'tux'
 gem 'dotenv'
 gem 'rack-flash3'
 gem 'rack'
