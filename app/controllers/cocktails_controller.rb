@@ -9,7 +9,7 @@ class CocktailsController < ApplicationController
       erb :'/cocktails/index.html'
     elsif !logged_in?
       redirect '/login'
-    end 
+    end
   end
 
   # loads the form on a new page to make a new cocktail
@@ -34,13 +34,13 @@ class CocktailsController < ApplicationController
       erb :'cocktails/new.html'
     end
   end
-  
+
   #edit page w/ form to edit
   get '/cocktails/:id/edit' do
     if !logged_in?
       flash[:error] = ["You must be logged in to edit your cocktails"]
       redirect "/login"
-    else 
+    else
       set_cocktail
         if set_cocktail.user_id == current_user.id
           erb :'/cocktails/edit.html'
@@ -61,7 +61,7 @@ class CocktailsController < ApplicationController
     if !logged_in?
       flash[:error] = ["You must be logged in to edit your cocktails"]
       redirect "/login"
-    else 
+    else
       set_cocktail
         if set_cocktail
           erb :'cocktails/show.html'
@@ -78,7 +78,7 @@ class CocktailsController < ApplicationController
     if !logged_in?
       flash[:error] = ["Please login to update your cocktails"]
       redirect "/login"
-    else 
+    else
       set_cocktail
         if current_user.id == set_cocktail.user_id
           if set_cocktail.update(
@@ -109,9 +109,9 @@ class CocktailsController < ApplicationController
           redirect '/cocktails'
         else
           flash[:error] = ["You do not have access to delete this cocktail"]
-          redirect '/cocktails' 
+          redirect '/cocktails'
         end
-    end 
+    end
   end
 
   private
